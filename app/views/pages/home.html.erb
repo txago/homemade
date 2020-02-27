@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="items-container">
+  <% @products.each do |product| %>
+  <div class="card">
+    <div class="carousel-item active">
+    <img src="https://i.picsum.photos/id/866/500/500.jpg" alt="" style="width:100%">
+    <h1 class="name"><%= product.name %></h1>
+    <p class="price"><%= product.price %></p>
+    <p><%= product.description %></p>
+  </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="footer"> </div>

@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: ['show' 'destroy']
+  before_action :set_order, only: [:show, :destroy]
 
   def show
     @order = Order.new
