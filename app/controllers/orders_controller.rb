@@ -12,10 +12,16 @@ class OrdersController < ApplicationController
 
   def create
     @product = Product.find(params[:product_id])
-    @order = Order.new(order_params)
+    @order = Order.new
     @order.product = @product
-    if @order.save
-      redirect_to product_path(@product)
+    @order.user = current_user
+    # @order.purchased = false
+
+
+    if @product.quantity.positive? && @order.save
+      @product.quantity -= 1
+      @product.save
+      redirect_to orders_path
     else
       render 'products/show'
     end
