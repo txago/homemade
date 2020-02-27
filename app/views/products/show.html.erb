@@ -1,26 +1,19 @@
-<div class='container justify-content-md-center text-center'>
-  <h2> <%= @product.name %> </h2>
-  <div class='row'>
-    <div class='col-'>
-      <img src="https://cdn.panelinha.com.br/receita/1434078000000-Bolo-de-Fuba.jpg" alt="Bolo" class="img-responsive">
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <!-- Product image -->
+      <%= cl_image_tag @product.photo.key, width: 640, height: 640, crop: :fill, class: 'img-fluid mb-4' %>
     </div>
-    <div class='col-sm text-left'>
-      <p> <%= @product.description %> </p>
+    <div class="col-12 col-md-6">
+      <!-- Product info -->
+      <h1 class="display-4 border-bottom pb-4 mb-4"><%= @product.name %></h1>
+      <p class="lead"><%= @product.description %></p>
+      <p>Quantity: <%= @product.quantity %></p>
+      <h2><span class="badge badge-primary">$ <%= @product.price %></span></h2>
+        <!-- <%= link_to 'Buy', products_path, class: 'btn btn-success btn-lg' %> -->
+      <div class="border-top pt-4 mt-4">
+        <%= link_to 'Back to my products list', products_path, class: 'btn btn-secondary' %>
+      </div>
     </div>
-    <div class='row'>
-      <div class='col-sm text-center'>
-        <p> Quantidade: <%= @product.quantity %> </p>
-      </div>
-      <div class='col-sm text-center'>
-       Price: <%= @product.price %>
-      </div>
-  </div>
-</div>
-<div class="container">
-  <div class='col'>
-    <%= link_to 'Add to Cart', product_orders_path(@product), method: :post, class: "btn btn-primary" %>
-
-
-
   </div>
 </div>

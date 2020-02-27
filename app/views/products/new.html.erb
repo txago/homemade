@@ -1,0 +1,31 @@
+<div class="container my-4">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-lg-6">
+      <h1>Advertise your product</h1>
+      <p>Fill out the information below:</p>
+      <%= simple_form_for @product do |f| %>
+      <div class="form-group">
+        <%= f.input :name, class: 'form-control form-control-lg' %>
+      </div>
+      <div class="form-group">
+        <%= f.input :description, as: :text, class: 'form-control form-control-lg' %>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.input :price, class: 'form-control form-control-lg' %>
+        </div>
+        <div class="form-group col-md-6">
+          <%= f.input :quantity, class: 'form-control form-control-lg' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.input :photo, as: :file %>
+      </div>
+      <div class="form-group">
+        <%= f.submit :submit, class: 'btn btn-lg btn-primary' %>
+      </div>
+      <% end %>
+      <%= link_to 'Back to my products list', products_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>
