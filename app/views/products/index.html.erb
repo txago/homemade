@@ -1,6 +1,6 @@
 <div class="container my-4">
 
-  <% if current_user.products.nil? %>
+  <% if current_user.products.any? %>
 
     <div class="row justify-content-center">
       <% @products.each do |product| %>
