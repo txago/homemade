@@ -10,7 +10,7 @@
       <p class="lead"><%= @product.description %></p>
       <p>Quantity: <%= @product.quantity %></p>
       <h2><span class="badge badge-primary">$ <%= @product.price %></span></h2>
-        <!-- <%= link_to 'Buy', products_path, class: 'btn btn-success btn-lg' %> -->
+        <%= link_to 'Buy', product_orders_path(@product), method: :post, class: 'btn btn-success btn-lg' %>
       <div class="border-top pt-4 mt-4">
         <%= link_to 'Back to my products list', products_path, class: 'btn btn-secondary' %>
       </div>
