@@ -21,5 +21,13 @@ $warning:    $orange;
 $border-radius:    2px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
+$theme-colors: (
+  "primary": $home-green,
+  "secondary": $dark-blue,
+  "success": $home-green,
+  "danger": $ruby-red,
+  "warning": $fluor-orange,
+  "info": $dark-blue,
+  "light": $alabaster
+  ) !default;
 
-// Override other variables below!

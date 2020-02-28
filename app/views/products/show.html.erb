@@ -1,0 +1,19 @@
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <!-- Product image -->
+      <%= cl_image_tag @product.photo.key, width: 640, height: 640, crop: :fill, class: 'img-fluid mb-4' %>
+    </div>
+    <div class="col-12 col-md-6">
+      <!-- Product info -->
+      <h1 class="display-4 border-bottom pb-4 mb-4"><%= @product.name %></h1>
+      <p class="lead"><%= @product.description %></p>
+      <p>Quantity: <%= @product.quantity %></p>
+      <h2><span class="badge badge-primary">$ <%= @product.price %></span></h2>
+        <!-- <%= link_to 'Buy', products_path, class: 'btn btn-success btn-lg' %> -->
+      <div class="border-top pt-4 mt-4">
+        <%= link_to 'Back to my products list', products_path, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+</div>
