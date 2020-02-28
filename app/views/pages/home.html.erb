@@ -1,15 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= image_tag("summer_sale1.jpg", class: "img-fluid w-100") %>
+          </div>
+          <div class="carousel-item">
+            <%= image_tag("summer_sale2.jpg",class: "img-fluid w-100" ) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
 
-<div class="items-container">
-  <% @products.each do |product| %>
-  <div class="card">
-    <div class="carousel-item active">
-    <img src="https://i.picsum.photos/id/866/500/500.jpg" alt="" style="width:100%">
-    <h1 class="name"><%= product.name %></h1>
-    <p class="price"><%= product.price %></p>
-    <p><%= product.description %></p>
+      <h1 class="bg-primary text-center mb-4"><span class="badge badge-primary">Latest products</span></h1>
+      <div class="row">
+
+      <% @products.last(4).each do |product| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+
+        <div class="card">
+          <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill, class: 'img-fluid' %>
+          <div class="card-body">
+            <h2><%= product.name %></h2>
+            <p>$ <%= product.price %></p>
+            <%= link_to 'Buy <i class="fas fa-shopping-cart"></i>'.html_safe, product_path(product), class: 'btn btn-primary' %>
+          </div>
+        </div>
+
+      </div>
+      <% end %>
+
+      </div>
+
+    </div>
   </div>
+  <div class="row">
+    <div class="col-12">
+
+      <h1 class="bg-primary text-center mb-4"><span class="badge badge-primary">Most Popular</span></h1>
+      <div class="row">
+
+      <% @products.limit(4).each do |product| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+
+        <div class="card">
+          <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill, class: 'img-fluid' %>
+          <div class="card-body">
+            <h2><%= product.name %></h2>
+            <p>$ <%= product.price %></p>
+            <%= link_to 'Buy <i class="fas fa-shopping-cart"></i>'.html_safe, product_path(product), class: 'btn btn-primary'%>
+
+          </div>
+        </div>
+
+      </div>
+       <h1 class="bg-secondary text-center mb-4"><span class="badge badge-secondary"></span></h1>
+      <% end %>
+
+      </div>
+
+    </div>
   </div>
-  <% end %>
 </div>
 
-<div class="footer"> </div>
