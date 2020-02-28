@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :orders, only: [:create]
   end
   resources :orders, only: [:index, :update, :destroy]
+  get 'checkout', to: 'orders#checkout'
 end
