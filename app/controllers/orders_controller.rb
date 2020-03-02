@@ -5,6 +5,15 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def purchase
+    @orders = current_user.orders.where(purchased: false)
+    @orders.each do |order|
+      order.purchased = true
+      order.save
+    end
+    redirect_to root_path
+  end
+
   def checkout
     @orders = current_user.orders.where(purchased: false)
   end
