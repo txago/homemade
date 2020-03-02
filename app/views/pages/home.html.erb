@@ -19,7 +19,7 @@
       <h1 class="bg-primary text-center mb-4"><span class="badge badge-primary">Latest products</span></h1>
       <div class="row">
 
-      <% @products.last(4).each do |product| %>
+      <% @latest.each do |product| %>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
 
         <div class="card">
@@ -44,7 +44,7 @@
       <h1 class="bg-primary text-center mb-4"><span class="badge badge-primary">Most Popular</span></h1>
       <div class="row">
 
-      <% @products.limit(4).each do |product| %>
+      <% @top.each do |product| %>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
 
         <div class="card">
