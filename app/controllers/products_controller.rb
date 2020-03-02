@@ -1,11 +1,17 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @products = Product.all
+    @products = Product.all - current_user.products
+  end
+
+  def my_products
+    @products = current_user.products
   end
 
   def show
+    @products = current_user.products
     @order = Order.new
   end
 
