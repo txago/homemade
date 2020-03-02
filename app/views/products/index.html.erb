@@ -6,7 +6,10 @@
       <% @products.each do |product| %>
         <div class="col-lg-3">
           <div class="card rounded my-4">
-            <%= cl_image_tag product.photo.key, width: 640, height: 640, crop: :fill, class: 'img-fluid' %>
+             <% if product.photo.attached? %>
+                <%= cl_image_tag(product.photo.key, width: 640, height: 640, crop: :fill, class: 'img-fluid')%>
+              <% end %>
+
             <div class="card-body">
               <h2 class="card-title"><%= link_to product.name, product_path(product) %></h2>
               <%= link_to 'See details', product_path(product), class: 'btn btn-primary' %>

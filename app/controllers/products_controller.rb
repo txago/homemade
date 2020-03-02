@@ -2,7 +2,15 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :destroy]
 
   def index
-    @products = Product.all
+    if params[:query].present?
+      sql_query = " \
+        products.name @@ :query \
+        OR products.description @@ :query \
+      "
+      @products = Product.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @products = Product.all
+    end
   end
 
   def show
