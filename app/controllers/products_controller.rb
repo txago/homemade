@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
 
   def my_products
     @products = current_user.products
->
   end
 
   def show
