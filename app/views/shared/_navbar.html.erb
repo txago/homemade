@@ -15,10 +15,13 @@
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "My products", products_path, class: "nav-link" %>
+          <%= link_to "All Products", products_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "My orders", orders_path, class: "nav-link" %>
+          <%= link_to "My products", my_products_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My orders", checkout_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Advertise your product", new_product_path, class: "btn btn-primary round mx-2" %>
@@ -31,7 +34,13 @@
         </li>
       <% else %>
         <li class="nav-item">
+          <%= link_to "All Products", products_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>
