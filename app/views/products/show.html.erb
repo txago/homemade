@@ -10,11 +10,15 @@
       <p class="lead"><%= @product.description %></p>
       <p>Quantity: <%= @product.quantity %></p>
       <h1><span class="badge badge-light">$ <%= @product.price %></span></h1>
-      <% if !current_user %>
+      <% if @product.user_id != current_user.id %>
       <%= link_to 'Buy <i class="fas fa-shopping-cart"></i>'.html_safe, product_orders_path(@product), method: :post, class: 'btn btn-success btn-lg' %>
       <% end %>
       <div class="border-top pt-4 mt-4">
+        <% if @product.user_id != current_user.id %>
         <%= link_to 'Back to products list', products_path, class: 'btn btn-secondary' %>
+        <% elsif %>
+        <%= link_to 'Back to my products list', my_products_path, class: 'btn btn-secondary' %>
+        <% end %>
       </div>
     </div>
   </div>
