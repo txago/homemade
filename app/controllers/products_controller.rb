@@ -3,15 +3,16 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if user_signed_in?
+     if user_signed_in?
       @products = Product.all - current_user.products
     else
-      @products = Product.all
+      @products = Product.where.not(quantity: 0)
     end
   end
 
   def my_products
     @products = current_user.products
+>
   end
 
   def show
