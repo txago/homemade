@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:index, :update, :destroy]
   get 'checkout', to: 'orders#checkout'
-  get 'checkout_message', to: 'orders#checkout_message'
+  post 'checkout', to: 'orders#purchase'
 end
