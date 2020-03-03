@@ -8,17 +8,17 @@ class ProductsController < ApplicationController
         products.name @@ :query \
         OR products.description @@ :query \
       "
-      @products = Product.where(sql_query, query: "%#{params[:query]}%").not(quantity: 0) - current_user.products
+      @query = Product.where(sql_query, query: "%#{params[:query]}%")
+      @products = @query.where.not(quantity: 0) - current_user.products
+
     elsif params[:query].present?
       sql_query = " \
         products.name @@ :query \
         OR products.description @@ :query \
       "
-      @products = Product.where(sql_query, query: "%#{params[:query]}%").not(quantity: 0)
-    end
-    
-    if user_signed_in?
-      @products = Product.where.not(quantity: 0) - current_user.products
+      @query = Product.where(sql_query, query: "%#{params[:query]}%")
+      @products = @query.where.not(quantity: 0)
+
     else
       @products = Product.where.not(quantity: 0)
     end
