@@ -3,7 +3,21 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-     if user_signed_in?
+    if params[:query].present? && user_signed_in?
+      sql_query = " \
+        products.name @@ :query \
+        OR products.description @@ :query \
+      "
+      @products = Product.where(sql_query, query: "%#{params[:query]}%").not(quantity: 0) - current_user.products
+    elsif params[:query].present?
+      sql_query = " \
+        products.name @@ :query \
+        OR products.description @@ :query \
+      "
+      @products = Product.where(sql_query, query: "%#{params[:query]}%").not(quantity: 0)
+    end
+    
+    if user_signed_in?
       @products = Product.where.not(quantity: 0) - current_user.products
     else
       @products = Product.where.not(quantity: 0)
