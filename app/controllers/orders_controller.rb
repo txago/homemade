@@ -18,6 +18,10 @@ class OrdersController < ApplicationController
     @orders = current_user.orders.where(purchased: false)
   end
 
+  def confirmation
+
+  end
+
   def new
     @product = Product.find(params[:product_id])
     @order = Order.new

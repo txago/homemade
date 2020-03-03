@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'checkout', to: 'orders#checkout'
   get '/my_products', to: "products#my_products"
   post 'checkout', to: 'orders#purchase'
+  get 'confirmation', to: 'orders#confirmation'
 end
