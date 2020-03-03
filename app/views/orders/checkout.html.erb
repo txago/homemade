@@ -3,18 +3,18 @@
     <div class="col-12 col-md-6">
       <h1 class="border-bottom">My Shopping Cart</h1>
       <h2>Total items: <%= @orders.size %></h2>
-        <div class="border-bottom">
-          <% @orders.each do |order| %>
-          <div>
+      <% @orders.each do |order| %>
+        <div class="d-flex border-bottom mb-4">
+          <div class="mr-4">
             <%= cl_image_tag order.product.photo.key, width: 100, height: 100, crop: :fill, class: 'img-fluid mb-4' %>
           </div>
-            <div>
-              <h3><%= order.product.name %> | $ <%= order.product.price %></h3>
-            </div>
-          <% end %>
+          <div>
+            <h3><%= order.product.name %> | $ <%= order.product.price %></h3>
+          </div>
         </div>
-        <%= link_to 'Continue shopping', products_path, class: 'btn btn-secondary' %>
-        <%= link_to 'Confirm Purchase', checkout_path, method: :post, class: 'btn btn-primary' %>
+      <% end %>
+      <%= link_to 'Continue shopping', products_path, class: 'btn btn-secondary' %>
+      <%= link_to 'Confirm Purchase', checkout_path, method: :post, class: 'btn btn-primary' %>
     </div>
   </div>
 </div>
