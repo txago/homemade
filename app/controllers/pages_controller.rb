@@ -4,8 +4,4 @@ class PagesController < ApplicationController
   def home
     @products = Product.where.not(quantity: 0)
   end
-
-  def index
-    @products = Product.all
-  end
 end
