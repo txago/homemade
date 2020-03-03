@@ -9,12 +9,12 @@ class OrdersController < ApplicationController
     @orders = current_user.orders.where(purchased: false)
     @orders.each do |order|
       order.purchased = true
-      order.save
+      order.save!
     end
-    redirect_to root_path
+    redirect_to confirmation_path
   end
 
-  def checkout
+  def index
     @orders = current_user.orders.where(purchased: false)
   end
 
@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
     if @product.quantity.positive? && @order.save
       @product.quantity -= 1
       @product.save
-      redirect_to checkout_path
+      redirect_to orders_path
     else
       render 'products/show'
     end

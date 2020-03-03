@@ -1,0 +1,10 @@
+Searching 164 files for "My Orders"
+
+/home/camila/code/camilabonini/homemade/app/views/shared/_navbar.html.erb:
+   22          </li>
+   23          <li class="nav-item">
+   24:           <%= link_to "My orders", checkout_path, class: "nav-link" %>
+   25          </li>
+   26          <li class="nav-item">
+
+1 match in 1 file
