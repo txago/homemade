@@ -7,8 +7,4 @@ class PagesController < ApplicationController
     @latest = products.last(4)
     @top = products.sort_by { |product| product.orders.count }.last(4).reverse
   end
-
-  def index
-    @products = Product.all
-  end
 end
