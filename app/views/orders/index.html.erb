@@ -21,7 +21,9 @@
         </div>
       <% end %>
       <%= link_to 'Continue shopping', products_path, class: 'btn btn-secondary' %>
+      <% if @orders.size.positive? %>
       <%= link_to 'Confirm Purchase', purchase_path, method: 'post', class: 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 </div>
