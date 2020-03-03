@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :destroy]
 
   def index
-    @products = Product.all
+    @products = Product.where.not(quantity: 0)
   end
 
   def show
