@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def index
      if user_signed_in?
-      @products = Product.all - current_user.products
+      @products = Product.where.not(quantity: 0) - current_user.products
     else
       @products = Product.where.not(quantity: 0)
     end
