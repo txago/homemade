@@ -1,19 +1,37 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:query].present?
+    if params[:query].present? && user_signed_in?
       sql_query = " \
         products.name @@ :query \
         OR products.description @@ :query \
       "
-      @products = Product.where(sql_query, query: "%#{params[:query]}%")
+      @products = Product.where(sql_query, query: "%#{params[:query]}%").not(quantity: 0) - current_user.products
+    elsif params[:query].present?
+      sql_query = " \
+        products.name @@ :query \
+        OR products.description @@ :query \
+      "
+      @products = Product.where(sql_query, query: "%#{params[:query]}%").not(quantity: 0)
+    end
+    
+    if user_signed_in?
+      @products = Product.where.not(quantity: 0) - current_user.products
     else
-      @products = Product.all
+      @products = Product.where.not(quantity: 0)
     end
   end
 
+  def my_products
+    @products = current_user.products
+  end
+
   def show
+    if user_signed_in?
+      @products = current_user.products
+    end
     @order = Order.new
   end
 
