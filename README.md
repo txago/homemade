@@ -6,7 +6,7 @@ The app was generated with [lewagon/rails-templates](https://github.com/lewagon/
 
 ## Project specifications
 * **Ruby v. 2.6.5**
-* **Gems dependencies:** 'bootstrap', 'devise, 'clodinary', 'pg', 'pg-search', 'webpack', 'faker', 'autoprefixer-rails', 'font-awesome-sass' and 'simple_form'  gems.
+* **Gems dependencies:** 'bootstrap', 'devise, 'cloudinary', 'pg', 'pg-search', 'webpack', 'faker', 'autoprefixer-rails', 'font-awesome-sass' and 'simple_form'  gems.
 * **Configuration:** environment configs can be found at `config/webpack/` and services at `config/database.yml` and `config/storage.yml` files.
 * **Database creation:** `rails db:create`
 * **Database initialization:** `rails db:migrate`. Run `rails db:seed` to populate the database with fake product and user data.
